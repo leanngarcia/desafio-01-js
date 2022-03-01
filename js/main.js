@@ -64,7 +64,19 @@ for (let i = 0; i < cantBultos; i++) {
 
   console.log("Alto del bulto nro " + (i + 1) + ": " + altoBulto + " cm");
 
-  volumenBulto = (largoBulto * anchoBulto * altoBulto) / 1000000;
+  //calculo volumen del bulto cargado y lo sumo al volumen total del pedido
+
+  function calcularVolumen(largo, ancho, alto) {
+    return largo * ancho * alto;
+  }
+
+  volumenBulto = calcularVolumen(largoBulto, anchoBulto, altoBulto);
+
+  function pasarCm3AM3(volumen) {
+    return volumen / 1000000;
+  }
+
+  volumenBulto = pasarCm3AM3(volumenBulto);
 
   console.log("Volúmen del bulto nro." + (i + 1) + ": " + volumenBulto + " m3");
 
@@ -75,7 +87,11 @@ for (let i = 0; i < cantBultos; i++) {
 
 // calculo peso volumetrico y comparo con peso real para calcular costo del envio
 
-let pesoVolumetrico = (volumenPedido * 1000000) / 5000;
+function calculoPesoVolumetrico(volumen) {
+  return (volumen * 1000000) / 5000;
+}
+
+let pesoVolumetrico = calculoPesoVolumetrico(volumenPedido);
 
 console.log("Peso volumétrico: " + pesoVolumetrico + " kg.");
 
